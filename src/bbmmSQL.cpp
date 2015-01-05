@@ -1,10 +1,3 @@
-//
-// redbase.cc
-//
-// Author: Jason McHugh (mchughj@cs.stanford.edu)
-//
-// This shell is provided for the student.
-
 #include <iostream>
 #include <cstdio>
 #include <cstring>
@@ -45,7 +38,6 @@ int main(int argc, char *argv[])
         cerr << "Usage: " << argv[0] << " dbname \n";
         exit(1);
     }
-
     // Opens up the database folder    
     dbname = argv[1];
     if ((rc = smm.OpenDb(dbname))) {
