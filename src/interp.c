@@ -483,36 +483,11 @@ break;
 if(flag1 && flag2){n=2;}
 else if(flag1 == 1 && flag2 == 0){n=1;}
 else{n=0;}
-//printf("type:%s\n",c);
-//printf("len:%d\n",*len);
-   /* extract the components of the format string */
-//printf("format string: %s",format_string);
-//   n = sscanf(format_string, "%s(%d)", c, len);
-//printf("n: %d",n);
-//char* ptr;
-//ptr=strchr(format_string,'(');
-//printf("%d/n",ptr-format_string);
    /* if no length given... */
    if(n == 1){
 	if(strcmp(c,"int") == 0) { *type = INT;*len = sizeof(int);}
 	else if(strcmp(c,"float") == 0) {*type = FLOAT;*len = sizeof(float);}
    	else if(strcmp(c,"varchar") == 0 || strcmp(c,"char") == 0) {return E_NOLENGTH;}
-      /*switch(c){
-         case 'int':
-            *type = INT;
-            *len = sizeof(int);
-            break;
-         case 'float':
-         case 'r':
-            *type = FLOAT;
-            *len = sizeof(float);
-            break;
-         case 'char':
-         case 'varchar':
-            return E_NOLENGTH;
-         default:
-            return E_INVFORMATSTRING;
-      }*/
    }
 
    /* if both are given, make sure the length is valid */
@@ -533,27 +508,6 @@ else{n=0;}
             if(*len < 1 || *len > MAXSTRINGLEN)
                return E_INVSTRLEN;
 	}
-      /*switch(c){
-         case 'int':
-            *type = INT;
-            if(*len != sizeof(int))
-               return E_INVINTSIZE;
-            break;
-         case 'float':
-         case 'r':
-            *type = FLOAT;
-            if(*len != sizeof(float))
-               return E_INVREALSIZE;
-            break;
-         case 'char':
-         case 'varchar':
-            *type = STRING;
-            if(*len < 1 || *len > MAXSTRINGLEN)
-               return E_INVSTRLEN;
-            break;
-         default:
-            return E_INVFORMATSTRING;
-      }*/
    }
 
    /* otherwise it's not a valid format string */

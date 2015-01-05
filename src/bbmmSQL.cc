@@ -41,10 +41,10 @@ int main(int argc, char *argv[])
     // Look for 2 arguments.  The first is always the name of the program
     // that was executed, and the second should be the name of the
     // database.
-    /*if (argc != 2) {
+    if (argc != 2) {
         cerr << "Usage: " << argv[0] << " dbname \n";
         exit(1);
-    }*/
+    }
 
     // Opens up the database folder    
     dbname = argv[1];

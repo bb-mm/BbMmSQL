@@ -19,11 +19,6 @@ using namespace std;
 void yyrestart(FILE*);
 #endif
 
-// The PF_STATS indicates that we will be tracking statistics for the PF
-// Layer.  The Manager is defined within pf_buffermgr.cc.  
-// We include it within the parser so that a system command can display
-// statistics about the DB.
-
 /*
  * string representation of tokens; provided by scanner
  */
@@ -35,8 +30,6 @@ extern char *yytext;
 static NODE *parse_tree;
 
 int bExit;                 // when to return from RBparse
-
-int bQueryPlans;           // When to print the query plans
 
 PF_Manager *pPfm;          // PF component manager
 SM_Manager *pSmm;          // SM component manager
@@ -59,7 +52,6 @@ QL_Manager *pQlm;          // QL component manager
       RW_TABLES
       RW_SHOW
       RW_DESC
-      RW_INDEX
       RW_LOAD
       RW_SET
       RW_HELP
@@ -492,7 +484,6 @@ void RBparse(PF_Manager &pfm, SM_Manager &smm, QL_Manager &qlm)
    pSmm  = &smm;
    pQlm  = &qlm;
    bExit = 0;
-   bQueryPlans = 0;
 
    /* Do forever */
    while (!bExit) {
@@ -514,98 +505,6 @@ void RBparse(PF_Manager &pfm, SM_Manager &smm, QL_Manager &qlm)
                bExit = TRUE;
          }
    }
-}
-
-//
-// Functions for printing the various structures to an output stream
-//
-ostream &operator<<(ostream &s, const AttrInfo &ai)
-{
-   return
-      s << " attrName=" << ai.attrName
-      << " attrType=" << 
-      (ai.attrType == INT ? "INT" :
-       ai.attrType == FLOAT ? "FLOAT" : "STRING")
-      << " attrLength=" << ai.attrLength;
-}
-
-ostream &operator<<(ostream &s, const RelAttr &qa)
-{
-   return
-      s << (qa.relName ? qa.relName : "NULL")
-      << "." << qa.attrName;
-}
-
-ostream &operator<<(ostream &s, const Condition &c)
-{
-   s << "\n      lhsAttr:" << c.lhsAttr << "\n"
-      << "      op=" << c.op << "\n";
-   if (c.bRhsIsAttr)
-      s << "      bRhsIsAttr=TRUE \n      rhsAttr:" << c.rhsAttr;
-   else
-      s << "      bRshIsAttr=FALSE\n      rhsValue:" << c.rhsValue;
-   return s;
-}
-
-ostream &operator<<(ostream &s, const Value &v)
-{
-   s << "AttrType: " << v.type;
-   switch (v.type) {
-      case INT:
-         s << " *(int *)data=" << *(int *)v.data;
-         break;
-      case FLOAT:
-         s << " *(float *)data=" << *(float *)v.data;
-         break;
-      case STRING:
-         s << " (char *)data=" << (char *)v.data;
-         break;
-   }
-   return s;
-}
-
-ostream &operator<<(ostream &s, const CompOp &op)
-{
-   switch(op){
-      case EQ_OP:
-         s << " =";
-         break;
-      case NE_OP:
-         s << " <>";
-         break;
-      case LT_OP:
-         s << " <";
-         break;
-      case LE_OP:
-         s << " <=";
-         break;
-      case GT_OP:
-         s << " >";
-         break;
-      case GE_OP:
-         s << " >=";
-         break;
-      case NO_OP:
-         s << " NO_OP";
-         break;
-   }
-   return s;
-}
-
-ostream &operator<<(ostream &s, const AttrType &at)
-{
-   switch(at){
-      case INT:
-         s << "INT";
-         break;
-      case FLOAT:
-         s << "FLOAT";
-         break;
-      case STRING:
-         s << "STRING";
-         break;
-   }
-   return s;
 }
 
 /*

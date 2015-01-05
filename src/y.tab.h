@@ -51,35 +51,34 @@ extern int yydebug;
     RW_TABLES = 261,
     RW_SHOW = 262,
     RW_DESC = 263,
-    RW_INDEX = 264,
-    RW_LOAD = 265,
-    RW_SET = 266,
-    RW_HELP = 267,
-    RW_PRINT = 268,
-    RW_EXIT = 269,
-    RW_SELECT = 270,
-    RW_FROM = 271,
-    RW_WHERE = 272,
-    RW_INSERT = 273,
-    RW_DELETE = 274,
-    RW_UPDATE = 275,
-    RW_AND = 276,
-    RW_INTO = 277,
-    RW_VALUES = 278,
-    T_EQ = 279,
-    T_LT = 280,
-    T_LE = 281,
-    T_GT = 282,
-    T_GE = 283,
-    T_NE = 284,
-    T_EOF = 285,
-    NOTOKEN = 286,
-    T_INT = 287,
-    T_REAL = 288,
-    T_STRING = 289,
-    T_NULL = 290,
-    T_QSTRING = 291,
-    T_SHELL_CMD = 292
+    RW_LOAD = 264,
+    RW_SET = 265,
+    RW_HELP = 266,
+    RW_PRINT = 267,
+    RW_EXIT = 268,
+    RW_SELECT = 269,
+    RW_FROM = 270,
+    RW_WHERE = 271,
+    RW_INSERT = 272,
+    RW_DELETE = 273,
+    RW_UPDATE = 274,
+    RW_AND = 275,
+    RW_INTO = 276,
+    RW_VALUES = 277,
+    T_EQ = 278,
+    T_LT = 279,
+    T_LE = 280,
+    T_GT = 281,
+    T_GE = 282,
+    T_NE = 283,
+    T_EOF = 284,
+    NOTOKEN = 285,
+    T_INT = 286,
+    T_REAL = 287,
+    T_STRING = 288,
+    T_NULL = 289,
+    T_QSTRING = 290,
+    T_SHELL_CMD = 291
   };
 #endif
 /* Tokens.  */
@@ -89,42 +88,41 @@ extern int yydebug;
 #define RW_TABLES 261
 #define RW_SHOW 262
 #define RW_DESC 263
-#define RW_INDEX 264
-#define RW_LOAD 265
-#define RW_SET 266
-#define RW_HELP 267
-#define RW_PRINT 268
-#define RW_EXIT 269
-#define RW_SELECT 270
-#define RW_FROM 271
-#define RW_WHERE 272
-#define RW_INSERT 273
-#define RW_DELETE 274
-#define RW_UPDATE 275
-#define RW_AND 276
-#define RW_INTO 277
-#define RW_VALUES 278
-#define T_EQ 279
-#define T_LT 280
-#define T_LE 281
-#define T_GT 282
-#define T_GE 283
-#define T_NE 284
-#define T_EOF 285
-#define NOTOKEN 286
-#define T_INT 287
-#define T_REAL 288
-#define T_STRING 289
-#define T_NULL 290
-#define T_QSTRING 291
-#define T_SHELL_CMD 292
+#define RW_LOAD 264
+#define RW_SET 265
+#define RW_HELP 266
+#define RW_PRINT 267
+#define RW_EXIT 268
+#define RW_SELECT 269
+#define RW_FROM 270
+#define RW_WHERE 271
+#define RW_INSERT 272
+#define RW_DELETE 273
+#define RW_UPDATE 274
+#define RW_AND 275
+#define RW_INTO 276
+#define RW_VALUES 277
+#define T_EQ 278
+#define T_LT 279
+#define T_LE 280
+#define T_GT 281
+#define T_GE 282
+#define T_NE 283
+#define T_EOF 284
+#define NOTOKEN 285
+#define T_INT 286
+#define T_REAL 287
+#define T_STRING 288
+#define T_NULL 289
+#define T_QSTRING 290
+#define T_SHELL_CMD 291
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 47 "parse.y" /* yacc.c:1909  */
+#line 40 "parse.y" /* yacc.c:1909  */
 
     int ival;
     CompOp cval;
@@ -132,7 +130,7 @@ union YYSTYPE
     char *sval;
     NODE *n;
 
-#line 136 "y.tab.h" /* yacc.c:1909  */
+#line 134 "y.tab.h" /* yacc.c:1909  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
