@@ -170,18 +170,6 @@ RC QL_Manager::Select(int nSelAttrs, const RelAttr selAttrs[],
   // run select
   if((rc = RunSelect(topNode)))
     return (rc);
-
-//  if(smm.useQO){
-//    cout << "estimated cost: " << cost << endl;
-//    cout << "estimated # tuples: " << tupleEst << endl;
-//  }
-//
-//
-//  if(bQueryPlans){
-//    cout << "PRINTING QUERY PLAN" <<endl;
-//    topNode->PrintNode(0);
-//  }
-
   
   // clean up query tree
   if((rc = CleanUpNodes(topNode)))
