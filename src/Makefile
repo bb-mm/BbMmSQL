@@ -33,25 +33,25 @@ STATS_OPTION   = -DPF_STATS
 #
 # Students: Please modify SOURCES variables as needed.
 #
-PF_SOURCES     = pf_buffermgr.cc pf_error.cc pf_filehandle.cc \
-                 pf_pagehandle.cc pf_hashtable.cc pf_manager.cc 
-RM_SOURCES     = rm_manager.cc rm_filehandle.cc rm_record.cc \
-                 rm_filescan.cc rm_error.cc rm_rid.cc
-IX_SOURCES     = #ix_manager.cc ix_indexhandle.cc ix_indexscan.cc ix_error.cc
-SM_SOURCES     = sm_manager.cc printer.cc sm_error.cc sm_attriterator.cc
-QL_SOURCES     = ql_error.cc ql_manager.cc ql_node.cc ql_nodeproj.cc ql_noderel.cc ql_nodejoin.cc ql_nodesel.cc qo_manager.cc
-UTILS_SOURCES  = dbcreate.cc dbdestroy.cc bbmmSQL.cc
+PF_SOURCES     = pf_buffermgr.cpp pf_error.cpp pf_filehandle.cpp \
+                 pf_pagehandle.cpp pf_hashtable.cpp pf_manager.cpp 
+RM_SOURCES     = rm_manager.cpp rm_filehandle.cpp rm_record.cpp \
+                 rm_filescan.cpp rm_error.cpp rm_rid.cpp
+IX_SOURCES     = #ix_manager.cpp ix_indexhandle.cpp ix_indexscan.cpp ix_error.cpp
+SM_SOURCES     = sm_manager.cpp printer.cpp sm_error.cpp sm_attriterator.cpp
+QL_SOURCES     = ql_error.cpp ql_manager.cpp ql_node.cpp ql_nodeproj.cpp ql_noderel.cpp ql_nodejoin.cpp ql_nodesel.cpp qo_manager.cpp
+UTILS_SOURCES  = dbcreate.cpp dbdestroy.cpp bbmmSQL.cpp
 PARSER_SOURCES = scan.c parse.c nodes.c interp.c
-TESTER_SOURCES = rm_testkpg.cc parser_test.cc ix_testkpg_2.cc ix_testpark.cc ix_testjl.cc ix_tester.cc ix_test_simple.cc ix_test.cc rm_testrecsizes.cc rm_testshnFIXED.cc rm_testyh_random.cc rm_test.cc rm_testgmf.cc rm_testkpg.cc 
+TESTER_SOURCES = rm_testkpg.cpp parser_test.cpp ix_testkpg_2.cpp ix_testpark.cpp ix_testjl.cpp ix_tester.cpp ix_test_simple.cpp ix_test.cpp rm_testrecsizes.cpp rm_testshnFIXED.cpp rm_testyh_random.cpp rm_test.cpp rm_testgmf.cpp rm_testkpg.cpp 
 
-PF_OBJECTS     = $(addprefix $(BUILD_DIR), $(PF_SOURCES:.cc=.o))
-RM_OBJECTS     = $(addprefix $(BUILD_DIR), $(RM_SOURCES:.cc=.o))
-IX_OBJECTS     = $(addprefix $(BUILD_DIR), $(IX_SOURCES:.cc=.o))
-SM_OBJECTS     = $(addprefix $(BUILD_DIR), $(SM_SOURCES:.cc=.o))
-QL_OBJECTS     = $(addprefix $(BUILD_DIR), $(QL_SOURCES:.cc=.o))
-UTILS_OBJECTS  = $(addprefix $(BUILD_DIR), $(UTILS_SOURCES:.cc=.o))
+PF_OBJECTS     = $(addprefix $(BUILD_DIR), $(PF_SOURCES:.cpp=.o))
+RM_OBJECTS     = $(addprefix $(BUILD_DIR), $(RM_SOURCES:.cpp=.o))
+IX_OBJECTS     = $(addprefix $(BUILD_DIR), $(IX_SOURCES:.cpp=.o))
+SM_OBJECTS     = $(addprefix $(BUILD_DIR), $(SM_SOURCES:.cpp=.o))
+QL_OBJECTS     = $(addprefix $(BUILD_DIR), $(QL_SOURCES:.cpp=.o))
+UTILS_OBJECTS  = $(addprefix $(BUILD_DIR), $(UTILS_SOURCES:.cpp=.o))
 PARSER_OBJECTS = $(addprefix $(BUILD_DIR), $(PARSER_SOURCES:.c=.o))
-TESTER_OBJECTS = $(addprefix $(BUILD_DIR), $(TESTER_SOURCES:.cc=.o))
+TESTER_OBJECTS = $(addprefix $(BUILD_DIR), $(TESTER_SOURCES:.cpp=.o))
 OBJECTS        = $(PF_OBJECTS) $(RM_OBJECTS) $(IX_OBJECTS) \
                  $(SM_OBJECTS) $(QL_OBJECTS) $(PARSER_OBJECTS) \
                  $(TESTER_OBJECTS) $(UTILS_OBJECTS)
@@ -65,8 +65,8 @@ LIBRARY_PARSER = $(LIB_DIR)libparser.a
 LIBRARIES      = $(LIBRARY_PF) $(LIBRARY_RM) $(LIBRARY_IX) \
                  $(LIBRARY_SM) $(LIBRARY_QL) $(LIBRARY_PARSER)
 
-UTILS          = $(UTILS_SOURCES:.cc=)
-TESTS          = $(TESTER_SOURCES:.cc=)
+UTILS          = $(UTILS_SOURCES:.cpp=)
+TESTS          = $(TESTER_SOURCES:.cpp=)
 EXECUTABLES    = $(UTILS) $(TESTS)
 
 LIBS           = -lparser -lql -lsm -lix -lrm -lpf
@@ -132,7 +132,7 @@ $(BUILD_DIR)interp.o: interp.c
 #
 -include $(OBJECTS:.o=.d)
 
-$(BUILD_DIR)%.d: %.cc
+$(BUILD_DIR)%.d: %.cpp
 	@set -e; \
 	 rm -f $@; \
 	 $(CC) $(CFLAGS) -MM -MT $(@:.d=.o) $< > $@.$$$$; \
