@@ -18,14 +18,11 @@
 #include <string>
 #include <set>
 #include "stddef.h"
-#include "statistics.h"
 #include <cfloat>
 
 
 using namespace std;
 
-extern StatisticsMgr *pStatisticsMgr;
-extern void PF_Statistics();
 /* 
  * These functions are used to parse string forms of int, flaot or
  * string, and move them into the record object during load
@@ -819,29 +816,7 @@ RC SM_Manager::Set(const char *paramName, const char *value)
       return (0);
     }
     if(strncmp(paramName, "printPageStats", 14) == 0 ){
-      int *piGP = pStatisticsMgr->Get(PF_GETPAGE);
-      int *piPF = pStatisticsMgr->Get(PF_PAGEFOUND);
-      int *piPNF = pStatisticsMgr->Get(PF_PAGENOTFOUND);
 
-      cout << "PF Layer Statistics" << endl;
-      cout << "-------------------" << endl;
-      if(piGP)
-        cout << "Total number of calls to GetPage Routine: " << *piGP << endl;
-      else
-        cout << "Total number of calls to GetPage Routine: None" << endl;
-      if(piPF)
-        cout << "  Number found: " << *piPF << endl;
-      else
-        cout << "  Number found: None" << endl;
-      if(piPNF)
-        cout << "  Number not found: " << *piPNF << endl;
-      else
-        cout << "  Number found: None" << endl;
-      return (0);
-    }
-    if(strncmp(paramName, "resetPageStats", 14) == 0){
-      pStatisticsMgr->Reset();
-      return (0);
     }
 
     if(strncmp(paramName, "useQO", 5) == 0 && strncmp(value, "true", 4) ==0){
@@ -868,29 +843,10 @@ RC SM_Manager::Set(const char *paramName, const char *value)
 }
 
 RC SM_Manager::ResetPageStats(){
-  pStatisticsMgr->Reset();
   return (0);
 }
 
 RC SM_Manager::PrintPageStats(){
-  int *piGP = pStatisticsMgr->Get(PF_GETPAGE);
-  int *piPF = pStatisticsMgr->Get(PF_PAGEFOUND);
-  int *piPNF = pStatisticsMgr->Get(PF_PAGENOTFOUND);
-
-  cout << "PF Layer Statistics" << endl;
-  cout << "-------------------" << endl;
-  if(piGP)
-    cout << "Total number of calls to GetPage Routine: " << *piGP << endl;
-  else
-    cout << "Total number of calls to GetPage Routine: None" << endl;
-  if(piPF)
-    cout << "  Number found: " << *piPF << endl;
-  else
-    cout << "  Number found: None" << endl;
-  if(piPNF)
-    cout << "  Number not found: " << *piPNF << endl;
-  else
-    cout << "  Number found: None" << endl;
   return (0);
 }
 

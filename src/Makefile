@@ -34,11 +34,10 @@ STATS_OPTION   = -DPF_STATS
 # Students: Please modify SOURCES variables as needed.
 #
 PF_SOURCES     = pf_buffermgr.cc pf_error.cc pf_filehandle.cc \
-                 pf_pagehandle.cc pf_hashtable.cc pf_manager.cc \
-                 pf_statistics.cc statistics.cc
+                 pf_pagehandle.cc pf_hashtable.cc pf_manager.cc 
 RM_SOURCES     = rm_manager.cc rm_filehandle.cc rm_record.cc \
                  rm_filescan.cc rm_error.cc rm_rid.cc
-IX_SOURCES     = ix_manager.cc ix_indexhandle.cc ix_indexscan.cc ix_error.cc
+IX_SOURCES     = #ix_manager.cc ix_indexhandle.cc ix_indexscan.cc ix_error.cc
 SM_SOURCES     = sm_manager.cc printer.cc sm_error.cc sm_attriterator.cc
 QL_SOURCES     = ql_error.cc ql_manager.cc ql_node.cc ql_nodeproj.cc ql_noderel.cc ql_nodejoin.cc ql_nodesel.cc qo_manager.cc
 UTILS_SOURCES  = dbcreate.cc dbdestroy.cc bbmmSQL.cc

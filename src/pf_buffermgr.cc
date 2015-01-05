@@ -22,15 +22,6 @@
 
 using namespace std;
 
-// The switch PF_STATS indicates that the user wishes to have statistics
-// tracked for the PF layer
-#ifdef PF_STATS
-#include "statistics.h"   // For StatisticsMgr interface
-
-// Global variable for the statistics manager
-StatisticsMgr *pStatisticsMgr;
-#endif
-
 #ifdef PF_LOG
 
 //
@@ -100,10 +91,6 @@ PF_BufferMgr::PF_BufferMgr(int _numPages) : hashTable(PF_HASH_TBL_SIZE)
    this->numPages = _numPages;
    pageSize = PF_PAGE_SIZE + sizeof(PF_PageHdr);
 
-#ifdef PF_STATS
-   // Initialize the global variable for the statistics manager
-   pStatisticsMgr = new StatisticsMgr();
-#endif
 
 #ifdef PF_LOG
    char psMessage[100];
@@ -150,10 +137,6 @@ PF_BufferMgr::~PF_BufferMgr()
 
    delete [] bufTable;
 
-#ifdef PF_STATS
-   // Destroy the global statistics manager
-   delete pStatisticsMgr;
-#endif
 
 #ifdef PF_LOG
    WriteLog("Destroyed the buffer manager.\n");
@@ -188,10 +171,6 @@ RC PF_BufferMgr::GetPage(int fd, PageNum pageNum, char **ppBuffer,
 #endif
 
 
-#ifdef PF_STATS
-   pStatisticsMgr->Register(PF_GETPAGE, STAT_ADDONE);
-#endif
-
    // Search for page in buffer
    if ((rc = hashTable.Find(fd, pageNum, slot)) &&
          (rc != PF_HASHNOTFOUND))
@@ -199,10 +178,6 @@ RC PF_BufferMgr::GetPage(int fd, PageNum pageNum, char **ppBuffer,
 
    // If page not in buffer...
    if (rc == PF_HASHNOTFOUND) {
-
-#ifdef PF_STATS
-   pStatisticsMgr->Register(PF_PAGENOTFOUND, STAT_ADDONE);
-#endif
 
       // Allocate an empty page, this will also promote the newly allocated
       // page to the MRU slot
@@ -225,10 +200,6 @@ RC PF_BufferMgr::GetPage(int fd, PageNum pageNum, char **ppBuffer,
 #endif
    }
    else {   // Page is in the buffer...
-
-#ifdef PF_STATS
-   pStatisticsMgr->Register(PF_PAGEFOUND, STAT_ADDONE);
-#endif
 
       // Error if we don't want to get a pinned page
       if (!bMultiplePins && bufTable[slot].pinCount > 0)
@@ -410,10 +381,6 @@ RC PF_BufferMgr::FlushPages(int fd)
    char psMessage[100];
    sprintf (psMessage, "Flushing all pages for (%d).\n", fd);
    WriteLog(psMessage);
-#endif
-
-#ifdef PF_STATS
-   pStatisticsMgr->Register(PF_FLUSHPAGES, STAT_ADDONE);
 #endif
 
    // Do a linear scan of the buffer to find pages belonging to the file
@@ -836,10 +803,6 @@ RC PF_BufferMgr::ReadPage(int fd, PageNum pageNum, char *dest)
    WriteLog(psMessage);
 #endif
 
-#ifdef PF_STATS
-   pStatisticsMgr->Register(PF_READPAGE, STAT_ADDONE);
-#endif
-
    // seek to the appropriate place (cast to long for PC's)
    long offset = pageNum * (long)pageSize + PF_FILE_HDR_SIZE;
    if (lseek(fd, offset, L_SET) < 0)
@@ -872,10 +835,6 @@ RC PF_BufferMgr::WritePage(int fd, PageNum pageNum, char *source)
    char psMessage[100];
    sprintf (psMessage, "Writing (%d,%d).\n", fd, pageNum);
    WriteLog(psMessage);
-#endif
-
-#ifdef PF_STATS
-   pStatisticsMgr->Register(PF_WRITEPAGE, STAT_ADDONE);
 #endif
 
    // seek to the appropriate place (cast to long for PC's)

@@ -23,13 +23,6 @@ void yyrestart(FILE*);
 // Layer.  The Manager is defined within pf_buffermgr.cc.  
 // We include it within the parser so that a system command can display
 // statistics about the DB.
-#ifdef PF_STATS
-#include "statistics.h"
-
-// This is defined within the pf_buffermgr.cc
-extern StatisticsMgr *pStatisticsMgr;
-
-#endif    // PF_STATS
 
 /*
  * string representation of tokens; provided by scanner
