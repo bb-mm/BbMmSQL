@@ -1,8 +1,4 @@
-//
-// File:        rm_rid.cc
-// Description: rm_rid represents a RID
-// Author:      Yifei Huang (yifei@stanford.edu)
-//
+
 #include "rm_rid.h"
 #include "rm_internal.h"
 

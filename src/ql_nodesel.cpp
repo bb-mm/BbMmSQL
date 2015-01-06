@@ -1,9 +1,3 @@
-// 
-// File:          ql_nodesel.cc
-// Description:   Abstract class for query processing nodes
-// Author:        Yifei Huang (yifei@stanford.edu)
-//
-
 #include <cstdio>
 #include <iostream>
 #include <unistd.h>

@@ -1,9 +1,3 @@
-//
-// File:        SM component
-// Description: Print parameters of all SM_Manager methods
-// Authors:     Yifei Huang (yifei@stanford.edu)
-//
-
 #include <cstdio>
 #include <iostream>
 #include <sstream>
@@ -974,28 +968,6 @@ RC SM_Manager::Help(const char *relName)
 
   if((rc = fs.CloseScan() ))
     return (rc);
-
-  // If we are to print the index, itereate through again, and print
-  // the entire index
-//  if((rc = fs.OpenScan(attrcatFH, STRING, MAXNAME+1, 0, EQ_OP, const_cast<char*>(relName))))
-//    return (rc);
-//  while(fs.GetNextRec(rec) != RM_EOF){
-//    char *pData;
-//    if((rec.GetData(pData)))
-//      return (rc);
-//    if(printIndex){
-//    AttrCatEntry *attr = (AttrCatEntry*)pData;
-//      if((attr->indexNo != NO_INDEXES)){
-//        IX_IndexHandle ih;
-//        if((rc = ixm.OpenIndex(relName, attr->indexNo, ih)))
-//          return (rc);
-//        //printf("successfully opens \n");
-//        if((rc = ih.PrintIndex()) || (rc = ixm.CloseIndex(ih)))
-//          return (rc);
-//      }
-//    }
-//  }
-
   printer.PrintFooter(cout);
   free(attributes);
   return (0);

@@ -1,8 +1,3 @@
-//
-// File:        rm_filescan.cc
-// Description: RM_FileScan handles scans through a file
-// Author:      Yifei Huang (yifei@stanford.edu)
-//
 
 #include <unistd.h>
 #include <sys/types.h>

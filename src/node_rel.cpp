@@ -1,8 +1,4 @@
-// 
-// File:          node_rel.cc
-// Description:   Node for relation processing
-// Author:        Yifei Huang (yifei@stanford.edu)
-//
+
 
 #include <cstdio>
 #include <iostream>

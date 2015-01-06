@@ -1,8 +1,4 @@
-//
-// ix.h
-//
-//   Index Manager Component Interface
-//
+
 
 #ifndef IX_H
 #define IX_H

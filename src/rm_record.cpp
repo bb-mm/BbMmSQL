@@ -1,8 +1,3 @@
-//
-// File:        rm_record.cc
-// Description: RM_Record represents a record in a file
-// Author:      Yifei Huang (yifei@stanford.edu)
-//
 
 #include <unistd.h>
 #include <sys/types.h>

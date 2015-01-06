@@ -1,6 +1,3 @@
-//
-// qo_manager.cc
-//
 
 #include <iostream>
 #include <sys/times.h>

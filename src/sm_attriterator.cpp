@@ -1,8 +1,3 @@
-// 
-// File:          SM component attribute iterator
-// Description:   This funciton keeps a scan that scans for attributes that
-//                belong to a particular relation
-// Author:        Yifei Huang (yifei@stanford.edu)
 
 #include <cstdio>
 #include <iostream>

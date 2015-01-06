@@ -1,10 +1,3 @@
-//
-// File:        rm_error.cc
-// Description: RM_PrintError functions
-// Authors:     Hugo Rivero (rivero@cs.stanford.edu)
-//              Dallan Quass (quass@cs.stanford.edu)
-//              Yifei Huang (yifei@stanford.edu)
-//
 
 #include <cerrno>
 #include <cstdio>

@@ -1,8 +1,3 @@
-// 
-// File:          ql_nodeproj.cc
-// Description:   Abstract class for query processing nodes
-// Author:        Yifei Huang (yifei@stanford.edu)
-//
 
 #include <cstdio>
 #include <iostream>

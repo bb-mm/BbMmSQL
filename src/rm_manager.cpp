@@ -1,8 +1,4 @@
-//
-// File:        rm_manager.cc
-// Description: RM_Manager handles file operations.
-// Author:      Yifei Huang (yifei@stanford.edu)
-//
+
 #include <unistd.h>
 #include <sys/types.h>
 #include "pf.h"

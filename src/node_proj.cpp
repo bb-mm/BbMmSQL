@@ -1,8 +1,4 @@
-// 
-// File:          node_proj.cc
-// Description:   Node for projection processing
-// Author:        Yifei Huang (yifei@stanford.edu)
-//
+
 
 #include <cstdio>
 #include <iostream>

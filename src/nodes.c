@@ -1,11 +1,4 @@
-/*
- * nodes.c: functions to allocate an initialize parse-tree nodes
- *
- * Authors; Dallan Quass
- *          Jan Jannink
- *
- * originally by: Mark McAuliffe, University of Wisconsin - Madison, 1991
- */
+
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,8 +1,3 @@
-//
-// File:        rm_filehandle.cc
-// Description: RM_FileHandle handles record manipulation on the page.
-// Author:      Yifei Huang (yifei@stanford.edu)
-//
 
 #include <unistd.h>
 #include <sys/types.h>
